@@ -3,41 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Messages;
 
 class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
-        $data=[
-            'name'=>'charleen',
-            'mobile'=>'999999',
-            'email'=>'123@gmail.com',
-        ];
-        return response()->json($data);
+        return view('home');
     }
-    public function my_second_api()
-    {
-        echo "i am here";
-    }
-
-    /*public function index (Request $request)
-    {
-    return "controller is here";
-    }*/
-    public function store(Request $request)
-    {
-       
-        $order=new Messages;
-        $order->id=$request->input('id');
-        $order->name=$request->input('name');
-        $order->email=$request->input('email');
-        $order->content=$request->input('content');
-        $order->save();
-        return $request->input();
-        //print_r($request->input()->json($request));
-    
-    }
-
-
 }

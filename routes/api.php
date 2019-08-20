@@ -30,11 +30,15 @@ Route::post('store','HomeController@store');
 */
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+}); //檔案原型
+
+
+
+
 
 //HouseController＠後面都有對應的function
 Route::get('houses', 'HouseController@index');
-Route::get('houses/{house}', 'HouseController@show');
+//Route::get('houses/{house}', 'HouseController@show');
 Route::post('houses', 'HouseController@store');
 Route::put('houses/{house}', 'HouseController@update');
 Route::delete('houses/{house}', 'HouseController@delete');
